@@ -179,7 +179,26 @@ class _PantallaPrincipalState extends State<PantallaPrincipal> {
                                       margin: const EdgeInsets.only(bottom: 10),
                                       child: ListTile(
                                         contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                                        title: Text(item.titulo, style: const TextStyle(fontWeight: FontWeight.w600)),
+                                        title: Row(
+                                          children: [
+                                            Expanded(
+                                              child: Text(item.titulo, style: const TextStyle(fontWeight: FontWeight.w600)),
+                                            ),
+                                            const SizedBox(width:12),
+                                            Text(
+                                              item.prioridad,
+                                              style: TextStyle(
+                                                color: switch(item.prioridad.toLowerCase()){
+                                                  'alta'=>Colors.red,
+                                                  'media'=>Colors.amber,
+                                                  'baja'=>Colors.green,
+                                                  _=>Colors.grey,
+                                                },
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                          ],
+                                          ),
                                         subtitle: Padding(
                                           padding: const EdgeInsets.only(top: 8),
                                           child: Column(
